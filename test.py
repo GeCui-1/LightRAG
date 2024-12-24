@@ -22,21 +22,25 @@ with open("./dickens/book.txt", "r", encoding="utf-8") as f:
     rag.insert(f.read())
 
 # Perform naive search
+print("naive query")
 print(
     rag.query("What are the top themes in this story?", param=QueryParam(mode="naive"))
 )
 
 # Perform local search
+print("local query")
 print(
     rag.query("What are the top themes in this story?", param=QueryParam(mode="local"))
 )
 
 # Perform global search
+print("global query")
 print(
     rag.query("What are the top themes in this story?", param=QueryParam(mode="global"))
 )
 
 # Perform hybrid search
+print("hybrid query")
 print(
     rag.query("What are the top themes in this story?", param=QueryParam(mode="hybrid"))
 )
