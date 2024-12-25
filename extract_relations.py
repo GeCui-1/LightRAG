@@ -34,7 +34,9 @@ for context in extracted_contexts:
 	context_log += context + "\n"
 with open(extracted_context_log_path, "w") as context_log_file:
 	context_log_file.write(context_log)
+print(f"total {len(contexts)} relations before extraction")
 print(f"total {len(extracted_contexts)} relations after extraction")
+print(f"total {len(raw_contexts)} characters before extraction")
 print(f"total {len(context_log)} characters after extraction")
 
 
