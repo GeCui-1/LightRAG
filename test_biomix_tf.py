@@ -37,7 +37,7 @@ print(true_false_biomix_qa)
 correct = 0
 wrong = 0
 unsure = 0
-for i in range(min(len(true_false_biomix_qa), args.qa_num)):
+for i in range(num_questions):
     print("")
     print("instance number ", i)
     
