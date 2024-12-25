@@ -27,7 +27,8 @@ rag = LightRAG(
     # llm_model_func=gpt_4o_complete  # Optionally, use a stronger model
 )
 with open(context_file_path, "r", encoding="utf-8") as f:
-    rag.insert(f.read())
+    context = f.read()[:10000]
+    rag.insert(context)
 
 # Load questions and answers
 true_false_biomix_qa = get_true_false_data(qa_file_path)
