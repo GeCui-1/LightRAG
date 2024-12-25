@@ -33,7 +33,7 @@ contexts = raw_contexts.split("\n")
 buffer = ""
 for i in range(len(contexts)):
     buffer += contexts[i] + "\n"
-    if i % 1000 == 999:
+    if i % 5000 == 4999:
         rag.insert(context)
         time.sleep(10)
 
