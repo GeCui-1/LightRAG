@@ -2,6 +2,7 @@ import os
 from lightrag import LightRAG, QueryParam
 from lightrag.llm import gpt_4o_mini_complete
 from lightrag.data_loader import get_true_false_data
+import time
 #########
 # Uncomment the below two lines if running in a jupyter notebook to handle the async nature of rag.insert()
 # import nest_asyncio
@@ -27,8 +28,14 @@ rag = LightRAG(
     # llm_model_func=gpt_4o_complete  # Optionally, use a stronger model
 )
 with open(context_file_path, "r", encoding="utf-8") as f:
-    context = f.read()
-    rag.insert(context)
+    raw_contexts = f.read()
+contexts = raw_contexts.split("\n")
+buffer = ""
+for i in range(len(contexts)):
+    buffer += contexts[i] + "\n"
+    if i % 1000 == 999:
+        rag.insert(context)
+        time.sleep(10)
 
 # Load questions and answers
 true_false_biomix_qa = get_true_false_data(qa_file_path)
