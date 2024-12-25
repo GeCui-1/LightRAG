@@ -22,6 +22,7 @@ for i in range(len(contexts)):
 		if entities[j] in contexts[i]:
 			extracted_contexts.append(contexts[i])
 			context_counts[j] += 1
+			break
 
 entity_log = ""
 for i in range(len(entities)):
