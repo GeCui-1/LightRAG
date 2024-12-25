@@ -30,9 +30,10 @@ with open(extracted_entity_log_path, "w") as entity_log_file:
 	entity_log_file.write(entity_log)
 
 context_log = ""
-for context in contexts:
+for context in extracted_contexts:
 	context_log += context + "\n"
 with open(extracted_context_log_path, "w") as context_log_file:
 	context_log_file.write(context_log)
+print(f"total {len(extracted_contexts)} relations after extraction")
 
 
