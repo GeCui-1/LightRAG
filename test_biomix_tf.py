@@ -28,11 +28,12 @@ rag = LightRAG(
 )
 with open(context_file_path, "r", encoding="utf-8") as f:
     context = f.read()[:10000]
+    print(context)
     rag.insert(context)
 
 # Load questions and answers
 true_false_biomix_qa = get_true_false_data(qa_file_path)
-print(true_false_biomix_qa)
+# print(true_false_biomix_qa)
 
 correct = 0
 wrong = 0
