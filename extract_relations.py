@@ -1,18 +1,18 @@
 import os
 
-entities_file_path = "./data/entities_of_interests.data"
+entities_file_path = "./data/subjects_of_interests.data"
 context_file_path = "./data/context_of_disease_which_has_relation_to_genes.csv"
 extracted_entity_log_path = "./data/extracted_entity.log"
 extracted_context_log_path = "./data/extracted_context.log"
 
 with open(entities_file_path, 'r') as file:
 	raw_entities = file.read()
-entities = raw_entities.split("\n")
+entities = raw_entities.lower().split("\n")
 entities = list(dict.fromkeys(entities))
 
 with open(context_file_path, 'r') as file:
 	raw_contexts = file.read()
-contexts = raw_contexts.split(".")
+contexts = raw_contexts.lower().split(".")
 
 extracted_contexts = []
 context_counts = [0 for _ in entities]
@@ -35,5 +35,6 @@ for context in extracted_contexts:
 with open(extracted_context_log_path, "w") as context_log_file:
 	context_log_file.write(context_log)
 print(f"total {len(extracted_contexts)} relations after extraction")
+print(f"total {len(context_log_file)} characters after extraction")
 
 
