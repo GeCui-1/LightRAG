@@ -9,7 +9,7 @@ from lightrag.data_loader import get_true_false_data
 #########
 
 # meta data for the test
-num_questions = 10
+num_questions = 311  # totally 311 questions
 query_mode = 'naive' # choose from naive, local, global, hybrid
 
 WORKING_DIR = "./biomixqa_tf"
@@ -27,7 +27,7 @@ rag = LightRAG(
     # llm_model_func=gpt_4o_complete  # Optionally, use a stronger model
 )
 with open(context_file_path, "r", encoding="utf-8") as f:
-    context = f.read()[:10000]
+    context = f.read()
     print(context)
     rag.insert(context)
 
