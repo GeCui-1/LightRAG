@@ -19,6 +19,8 @@ context_counts = [0 for _ in entities]
 
 for i in range(len(contexts)):
 	for j in range(len(entities)):
+		if len(entities[j]) == 0:
+			continue
 		if entities[j] in contexts[i]:
 			extracted_contexts.append(contexts[i])
 			context_counts[j] += 1
