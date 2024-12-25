@@ -16,7 +16,7 @@ WORKING_DIR = "./biomixqa_tf"
 if not os.path.exists(WORKING_DIR):
     os.mkdir(WORKING_DIR)
 
-context_file_path = "./data/context_of_disease_which_has_relation_to_genes.csv"
+context_file_path = "./data/extracted_context.log"
 qa_file_path = "./data/true_false_biomix.data"
 
 
