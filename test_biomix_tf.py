@@ -34,7 +34,7 @@ buffer = ""
 for i in range(len(contexts)):
     buffer += contexts[i] + "\n"
     if i % 5000 == 4999:
-        rag.insert(context)
+        rag.insert(buffer)
         time.sleep(10)
 
 # Load questions and answers
