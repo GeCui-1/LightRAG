@@ -28,7 +28,6 @@ rag = LightRAG(
 )
 with open(context_file_path, "r", encoding="utf-8") as f:
     context = f.read()
-    print(context)
     rag.insert(context)
 
 # Load questions and answers
