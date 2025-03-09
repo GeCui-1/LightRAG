@@ -11,7 +11,7 @@ import time
 
 # meta data for the test
 num_questions = 311  # totally 311 questions
-query_mode = 'hybrid' # choose from naive, local, global, hybrid
+query_mode = 'naive' # choose from naive, local, global, hybrid
 
 WORKING_DIR = "./tf"
 if not os.path.exists(WORKING_DIR):
@@ -69,6 +69,7 @@ for i in range(num_questions):
     print("question: ", question)
     print("label: ", label)
     print("ans: ", ans)
+    print("time: ", end_time - start_time)
   
     if "unsure" in ans.lower():
         print("LLM is unsure about this question")
