@@ -55,10 +55,10 @@ for i in range(num_questions):
     
     question = true_false_biomix_qa[i][0] + ". Answer should start with true, false, or unsure."
     raw_label = true_false_biomix_qa[i][1].lower()
-        if 'true' in raw_label:
-            label = 'true'
-        else:
-            label = 'false'
+    if 'true' in raw_label:
+        label = 'true'
+    else:
+        label = 'false'
     start_time = time.time()
     ans = rag.query(question, param=QueryParam(mode=query_mode))
     end_time = time.time()
