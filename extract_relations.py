@@ -1,7 +1,7 @@
 import os
 
 entities_file_path = "./data/tf/subjects.data"
-context_file_path = "./data/context_of_disease_which_has_relation_to_genes.csv"
+context_file_path = "./data/context.csv"
 extracted_entity_log_path = "./data/extracted_entity.log"
 extracted_context_log_path = "./data/extracted_context.log"
 
