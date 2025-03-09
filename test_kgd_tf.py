@@ -17,8 +17,7 @@ WORKING_DIR = "./tf"
 if not os.path.exists(WORKING_DIR):
     os.mkdir(WORKING_DIR)
 
-# context_file_path = "./data/extracted_context.log"
-context_file_path = "./dickens/book.txt"
+context_file_path = "./data/treatment/extracted_context.log"
 qa_file_path = "./data/treatment/qa.data"
 
 
