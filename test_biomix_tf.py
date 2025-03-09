@@ -49,7 +49,11 @@ for i in range(num_questions):
     print("instance number ", i)
     
     question = true_false_biomix_qa[i][0] + "". Answer should start with true or false. If you are unsure about the answers, you should make a random guess."
-    label = true_false_biomix_qa[i][1]
+    raw_label = true_false_biomix_qa[i][1].lower()
+        if 'true' in raw_label:
+            label = 'true'
+        else:
+            label = 'false'
     ans = rag.query(question, param=QueryParam(mode=query_mode))
   
     print("question: ", question)
