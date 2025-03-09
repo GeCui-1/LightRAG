@@ -48,7 +48,7 @@ for i in range(num_questions):
     print("")
     print("instance number ", i)
     
-    question = true_false_biomix_qa[i][0] + "". Answer should start with true or false. If you are unsure about the answers, you should make a random guess."
+    question = true_false_biomix_qa[i][0] + "". Answer should start with true, false, or unsure."
     raw_label = true_false_biomix_qa[i][1].lower()
         if 'true' in raw_label:
             label = 'true'
