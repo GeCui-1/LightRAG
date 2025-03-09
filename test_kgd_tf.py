@@ -18,7 +18,7 @@ if not os.path.exists(WORKING_DIR):
     os.mkdir(WORKING_DIR)
 
 context_file_path = "./data/extracted_context.log"
-qa_file_path = "./data/true_false_biomix.data"
+qa_file_path = "./data/tf/qa.data"
 
 
 # create RAG
