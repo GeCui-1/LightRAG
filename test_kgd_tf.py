@@ -39,7 +39,7 @@ for i in range(len(contexts)):
         time.sleep(1)
         buffer = ""
 if len(buffer) > 0:
-    print("buffer:", buffer)
+    # print("buffer:", buffer)
     rag.insert(buffer)
 #################################################################### create RAG
 
