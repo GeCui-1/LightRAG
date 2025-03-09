@@ -1,9 +1,9 @@
 import os
 
-entities_file_path = "./data/tf/subjects.data"
+entities_file_path = "./data/treatment/subjects.data"
 context_file_path = "./data/context.csv"
-extracted_entity_log_path = "./data/extracted_entity.log"
-extracted_context_log_path = "./data/extracted_context.log"
+extracted_entity_log_path = "./data/treatment/extracted_entity.log"
+extracted_context_log_path = "./data/treatment/extracted_context.log"
 
 with open(entities_file_path, 'r') as file:
 	raw_entities = file.read()
