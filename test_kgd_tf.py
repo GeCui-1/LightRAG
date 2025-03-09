@@ -51,7 +51,7 @@ correct = 0
 wrong = 0
 unsure = 0
 total_time = 0.0
-for i in range(num_questions):
+for i in range(min(num_questions, len(true_false_biomix_qa))):
     print("")
     print("instance number ", i)
     
