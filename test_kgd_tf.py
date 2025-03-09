@@ -22,7 +22,7 @@ context_file_path = "./dickens/book.txt"
 qa_file_path = "./data/treatment/qa.data"
 
 
-# create RAG
+#################################################################### create RAG
 rag = LightRAG(
     working_dir=WORKING_DIR,
     llm_model_func=gpt_4o_mini_complete,  # Use gpt_4o_mini_complete LLM model
@@ -36,27 +36,32 @@ for i in range(len(contexts)):
     buffer += contexts[i] + "\n"
     if i % 5000 == 4999:
         rag.insert(buffer)
-        time.sleep(10)
+        time.sleep(1)
+#################################################################### create RAG
 
 # Load questions and answers
 true_false_biomix_qa = get_true_false_data(qa_file_path)
-# print(true_false_biomix_qa)
+print(true_false_biomix_qa)
 
 correct = 0
 wrong = 0
 unsure = 0
+total_time = 0.0
 for i in range(num_questions):
     print("")
     print("instance number ", i)
     
-    question = true_false_biomix_qa[i][0] + ". Answer should start with true, false. If you are unsure about the answers, you should make a random guess among true and false."
+    question = true_false_biomix_qa[i][0] + ". Answer should start with true, false, or unsure."
     raw_label = true_false_biomix_qa[i][1].lower()
         if 'true' in raw_label:
             label = 'true'
         else:
             label = 'false'
+    start_time = time.time()
     ans = rag.query(question, param=QueryParam(mode=query_mode))
-  
+    end_time = time.time()
+    total_time += end_time - start_time
+
     print("question: ", question)
     print("label: ", label)
     print("ans: ", ans)
@@ -74,3 +79,4 @@ for i in range(num_questions):
 print("unsure count: ", unsure)
 print("correct count: ", correct)
 print("wrong count: ", wrong)
+print("total time: ", total_time)
