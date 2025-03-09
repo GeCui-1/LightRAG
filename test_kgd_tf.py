@@ -11,7 +11,7 @@ import time
 
 # meta data for the test
 num_questions = 311  # totally 311 questions
-query_mode = 'naive' # choose from naive, local, global, hybrid
+query_mode = 'hybrid' # choose from naive, local, global, hybrid
 
 WORKING_DIR = "./tf"
 if not os.path.exists(WORKING_DIR):
