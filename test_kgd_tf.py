@@ -39,6 +39,8 @@ for i in range(len(contexts)):
         rag.insert(buffer)
         time.sleep(1)
         buffer = ""
+if len(buffer) > 0:
+    rag.insert(buffer)
 #################################################################### create RAG
 
 # Load questions and answers
