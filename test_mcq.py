@@ -1,7 +1,7 @@
 import os
 from lightrag import LightRAG, QueryParam
 from lightrag.llm import gpt_4o_mini_complete
-from lightrag.data_loader import get_true_false_data
+from lightrag.data_loader import get_true_false_data, get_mcq_data
 import time
 #########
 # Uncomment the below two lines if running in a jupyter notebook to handle the async nature of rag.insert()
