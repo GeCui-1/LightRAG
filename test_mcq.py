@@ -44,12 +44,12 @@ if len(buffer) > 0:
 
 # Load questions and answers
 dataset_paths = {
-    "cancer": "./data/mcq_cancer.data",
-    "gene": "./data/mcq_genetic_disorder.data",
-    "heart": "./data/mcq_heart.data",
-    "immune": "./data/mcq_immune.data",
-    "infection": "./data/mcq_infection.data",
-    "neural": "./data/mcq_neural.data",
+    "cancer": "./data/mcq/mcq_cancer.data",
+    "gene": "./data/mcq/mcq_genetic_disorder.data",
+    "heart": "./data/mcq/mcq_heart.data",
+    "immune": "./data/mcq/mcq_immune.data",
+    "infection": "./data/mcq/mcq_infection.data",
+    "neural": "./data/mcq/mcq_neural.data",
 }
 
 qas = {}
