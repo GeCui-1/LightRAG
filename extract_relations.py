@@ -33,6 +33,7 @@ with open(extracted_entity_log_path, "w") as entity_log_file:
 	entity_log_file.write(entity_log)
 
 context_log = ""
+extracted_contexts.sort()
 for context in extracted_contexts:
 	context_log += context + "\n"
 with open(extracted_context_log_path, "w") as context_log_file:
