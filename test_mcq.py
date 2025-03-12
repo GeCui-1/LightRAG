@@ -36,6 +36,7 @@ for i in range(len(contexts)):
         rag.insert(buffer)
         time.sleep(10)
         buffer = ""
+        break;
 if len(buffer) > 0:
     # print("buffer:", buffer)
     rag.insert(buffer)
