@@ -1,0 +1,20 @@
+Out of the given list, which Variant is associated with aortic stenosis and large artery stroke. Given list is: rs34243448, rs1893592, rs1765871, rs229541, rs10455872
+Answer: rs10455872
+Out of the given list, which Gene is associated with non-alcoholic steatohepatitis and non-alcoholic fatty liver disease. Given list is: HLA-DQB2, ZFPM2, KALRN, PNPLA3, DENND1A
+Answer: PNPLA3
+Out of the given list, which Variant is associated with thoracic aortic aneurysm and abdominal aortic aneurysm. Given list is: rs1642764, rs595244, rs139606545, rs12077210, rs12917707
+Answer: rs595244
+Out of the given list, which Gene is associated with liver cirrhosis and non-alcoholic steatohepatitis. Given list is: SCN1A, EYA2, CACNA2D1, HBB, PNPLA3
+Answer: PNPLA3
+Out of the given list, which Variant is associated with large artery stroke and aortic stenosis. Given list is: rs10455872, rs35781323, rs4615152, rs761934676, rs11965538
+Answer: rs10455872
+Out of the given list, which Gene is associated with non-alcoholic fatty liver disease and non-alcoholic steatohepatitis. Given list is: C5AR1, PNPLA3, ABCG2, BTC, UMPS
+Answer: PNPLA3
+Out of the given list, which Gene is associated with non-alcoholic steatohepatitis and liver cirrhosis. Given list is: PNPLA3, SULT1B1, KIT, AHR, FAM227B
+Answer: PNPLA3
+Out of the given list, which Gene is associated with non-alcoholic fatty liver disease and liver cirrhosis. Given list is: IL23R, RP1, PSCA, PNPLA3, PLG
+Answer: PNPLA3
+Out of the given list, which Variant is associated with abdominal aortic aneurysm and thoracic aortic aneurysm. Given list is: rs11675342, rs595244, rs3018362, rs11651755, rs1709393”
+Answer: rs11675342
+Out of the given list, which Gene is associated with liver cirrhosis and non-alcoholic fatty liver disease. Given list is: HYKK, PLA2G6, ADH1B, PNPLA3, RGS14
+Answer: PNPLA3
