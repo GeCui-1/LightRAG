@@ -2,8 +2,8 @@ import os
 
 entities_file_path = "./data/mcq/subjects.data"
 context_file_path = "./data/context_of_disease_which_has_relation_to_genes.csv"
-extracted_entity_log_path = "./data/treatment/extracted_mcq_entity.log"
-extracted_context_log_path = "./data/treatment/extracted_mcq_context.log"
+extracted_entity_log_path = "./data/extracted_mcq_entity.log"
+extracted_context_log_path = "./data/extracted_mcq_context.log"
 
 with open(entities_file_path, 'r') as file:
 	raw_entities = file.read()
