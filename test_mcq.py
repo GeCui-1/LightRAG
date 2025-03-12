@@ -10,7 +10,7 @@ import time
 #########
 
 # meta data for the test
-num_questions = 1  # totally 311 questions
+num_questions = 1000  # totally 311 questions
 query_mode = 'naive' # choose from naive, local, global, hybrid
 
 WORKING_DIR = "./tf"
@@ -32,7 +32,7 @@ buffer = ""
 print("context length:", len(contexts))
 for i in range(len(contexts)):
     buffer += contexts[i] + "\n"
-    if i % 100 == 99:
+    if i % 100000 == 99999:
         rag.insert(buffer)
         time.sleep(1)
         buffer = ""
