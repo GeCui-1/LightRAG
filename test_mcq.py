@@ -1,0 +1,87 @@
+import os
+from lightrag import LightRAG, QueryParam
+from lightrag.llm import gpt_4o_mini_complete
+from lightrag.data_loader import get_true_false_data
+import time
+#########
+# Uncomment the below two lines if running in a jupyter notebook to handle the async nature of rag.insert()
+# import nest_asyncio
+# nest_asyncio.apply()
+#########
+
+# meta data for the test
+num_questions = 311  # totally 311 questions
+query_mode = 'naive' # choose from naive, local, global, hybrid
+
+WORKING_DIR = "./tf"
+if not os.path.exists(WORKING_DIR):
+    os.mkdir(WORKING_DIR)
+
+context_file_path = "./data/treatment/extracted_context.log"
+qa_file_path = "./data/treatment/qa.data"
+
+
+#################################################################### create RAG
+rag = LightRAG(
+    working_dir=WORKING_DIR,
+    llm_model_func=gpt_4o_mini_complete,  # Use gpt_4o_mini_complete LLM model
+    # llm_model_func=gpt_4o_complete  # Optionally, use a stronger model
+)
+with open(context_file_path, "r", encoding="utf-8") as f:
+    raw_contexts = f.read()
+contexts = raw_contexts.split("\n")
+buffer = ""
+print("context length:", len(contexts))
+for i in range(len(contexts)):
+    buffer += contexts[i] + "\n"
+    if i % 5000 == 4999:
+        rag.insert(buffer)
+        time.sleep(1)
+        buffer = ""
+if len(buffer) > 0:
+    # print("buffer:", buffer)
+    rag.insert(buffer)
+#################################################################### create RAG
+
+# Load questions and answers
+true_false_biomix_qa = get_true_false_data(qa_file_path)
+print(true_false_biomix_qa)
+
+correct = 0
+wrong = 0
+unsure = 0
+total_time = 0.0
+for i in range(min(num_questions, len(true_false_biomix_qa))):
+    print("")
+    print("instance number ", i)
+    
+    question = true_false_biomix_qa[i][0] + ". Answer should start with true, false, or unsure."
+    raw_label = true_false_biomix_qa[i][1].lower()
+    if 'true' in raw_label:
+        label = 'true'
+    else:
+        label = 'false'
+    start_time = time.time()
+    ans = rag.query(question, param=QueryParam(mode=query_mode))
+    end_time = time.time()
+    total_time += end_time - start_time
+
+    print("question: ", question)
+    print("label: ", label)
+    print("ans: ", ans)
+    print("time: ", end_time - start_time)
+  
+    if "unsure" in ans.lower():
+        print("LLM is unsure about this question")
+        unsure += 1
+    elif label in ans.lower():
+        print("answer is correct")
+        correct += 1
+    else:
+        print("answer is wrong")
+        wrong += 1
+
+print("unsure count: ", unsure)
+print("correct count: ", correct)
+print("wrong count: ", wrong)
+print("total time: ", total_time)
