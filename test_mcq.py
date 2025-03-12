@@ -77,7 +77,7 @@ for qa_type, qa in qas.items():
         print("")
         print("instance number ", i)
         
-        question = questions[i] + ". Answer should start with true, false, or unsure."
+        question = questions[i]
         label = labels[i].lower()
         start_time = time.time()
         
