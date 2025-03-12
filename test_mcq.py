@@ -10,16 +10,14 @@ import time
 #########
 
 # meta data for the test
-num_questions = 311  # totally 311 questions
+num_questions = 1000  # totally 311 questions
 query_mode = 'naive' # choose from naive, local, global, hybrid
 
 WORKING_DIR = "./tf"
 if not os.path.exists(WORKING_DIR):
     os.mkdir(WORKING_DIR)
 
-context_file_path = "./data/treatment/extracted_context.log"
-qa_file_path = "./data/treatment/qa.data"
-
+context_file_path = "./data/treatment/extracted_mcq_context.log"
 
 #################################################################### create RAG
 rag = LightRAG(
@@ -34,54 +32,71 @@ buffer = ""
 print("context length:", len(contexts))
 for i in range(len(contexts)):
     buffer += contexts[i] + "\n"
-    if i % 5000 == 4999:
+    if i % 100 == 99:
         rag.insert(buffer)
         time.sleep(1)
         buffer = ""
+        break  # for debugging only
 if len(buffer) > 0:
     # print("buffer:", buffer)
     rag.insert(buffer)
 #################################################################### create RAG
 
 # Load questions and answers
-true_false_biomix_qa = get_true_false_data(qa_file_path)
-print(true_false_biomix_qa)
+dataset_paths = {
+    "cancer": "./data/mcq_cancer.data",
+    "gene": "./data/mcq_genetic_disorder.data",
+    "heart": "./data/mcq_heart.data",
+    "immune": "./data/mcq_immune.data",
+    "infection": "./data/mcq_infection.data",
+    "neural": "./data/mcq_neural.data",
+}
 
-correct = 0
-wrong = 0
-unsure = 0
-total_time = 0.0
-for i in range(min(num_questions, len(true_false_biomix_qa))):
-    print("")
-    print("instance number ", i)
+qas = {}
+corrects = {}
+wrongs = {}
+unsures = {}
+exceptions = {}
+total_times = {}
+for key, val in dataset_paths.items():
+    questions, answers = get_mcq_data(dataset_paths[key])
+    qas[key] = (questions, answers)
+    corrects[key] = 0
+    wrongs[key] = 0
+    unsures[key] = 0
+    exceptions[key] = 0
+    total_times[key] = 0.0
+
+for qa_type, qa in qas.items():
+    print("qa type:", qa_type)
+    questions = qa[0]
+    labels = qa[1]
+    print("questions:", questions)
+    print("answers:", answers)
+    for i in range(min(num_questions, len(questions))):
+        print("")
+        print("instance number ", i)
+        
+        question = questions[i] + ". Answer should start with true, false, or unsure."
+        label = labels[i].lower()
+        start_time = time.time()
+        
+        ans = rag.query(question, param=QueryParam(mode=query_mode))
+        
+        end_time = time.time()
+        total_times[qa_type] += end_time - start_time
     
-    question = true_false_biomix_qa[i][0] + ". Answer should start with true, false, or unsure."
-    raw_label = true_false_biomix_qa[i][1].lower()
-    if 'true' in raw_label:
-        label = 'true'
-    else:
-        label = 'false'
-    start_time = time.time()
-    ans = rag.query(question, param=QueryParam(mode=query_mode))
-    end_time = time.time()
-    total_time += end_time - start_time
+        print("question: ", question)
+        print("label: ", label)
+        print("ans: ", ans)
+      
+        if label in ans.lower():
+            print("answer is correct")
+            corrects[qa_type] += 1
+        else:
+            print("answer is wrong")
+            wrongs[qa_type] += 1
 
-    print("question: ", question)
-    print("label: ", label)
-    print("ans: ", ans)
-    print("time: ", end_time - start_time)
-  
-    if "unsure" in ans.lower():
-        print("LLM is unsure about this question")
-        unsure += 1
-    elif label in ans.lower():
-        print("answer is correct")
-        correct += 1
-    else:
-        print("answer is wrong")
-        wrong += 1
-
-print("unsure count: ", unsure)
-print("correct count: ", correct)
-print("wrong count: ", wrong)
-print("total time: ", total_time)
+print("correct count: ", corrects)
+print("wrong count: ", wrongs)
+print("total time: ", total_times)
