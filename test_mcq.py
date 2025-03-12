@@ -27,7 +27,7 @@ rag = LightRAG(
 )
 with open(context_file_path, "r", encoding="utf-8") as f:
     raw_contexts = f.read()
-contexts = raw_contexts.split("\n")
+contexts = raw_contexts.split("\n").sort()
 buffer = ""
 print("context length:", len(contexts))
 for i in range(len(contexts)):
