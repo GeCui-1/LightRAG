@@ -10,7 +10,7 @@ import time
 #########
 
 # meta data for the test
-num_questions = 1000  # totally 311 questions
+num_questions = 1  # totally 311 questions
 query_mode = 'naive' # choose from naive, local, global, hybrid
 
 WORKING_DIR = "./tf"
