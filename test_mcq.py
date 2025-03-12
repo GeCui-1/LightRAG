@@ -32,9 +32,9 @@ buffer = ""
 print("context length:", len(contexts))
 for i in range(len(contexts)):
     buffer += contexts[i] + "\n"
-    if i % 10000 == 9999:
+    if i % 5000 == 4999:
         rag.insert(buffer)
-        time.sleep(5)
+        time.sleep(10)
         buffer = ""
 if len(buffer) > 0:
     # print("buffer:", buffer)
