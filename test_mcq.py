@@ -77,7 +77,7 @@ for qa_type, qa in qas.items():
         print("")
         print("instance number ", i)
         
-        question = questions[i]
+        question = questions[i] + ". Your response should start with the answer. Do not mention genes or variants that are not the answer."
         label = labels[i].lower()
         start_time = time.time()
         
