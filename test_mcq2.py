@@ -82,7 +82,7 @@ for qa_type, qa in qas.items():
         start_time = time.time()
         
         ans = rag.query(question, param=QueryParam(mode=query_mode))
-        ans = ans.split('\n')[0]
+        # ans = ans.split('\n')[0]
         
         end_time = time.time()
         total_times[qa_type] += end_time - start_time
