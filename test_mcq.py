@@ -30,7 +30,7 @@ with open(context_file_path, "r", encoding="utf-8") as f:
 contexts = raw_contexts.split("\n")
 buffer = ""
 print("context length:", len(contexts))
-for i in range(len(contexts)):
+for i in range(min(435000, len(contexts))):
     buffer += contexts[i] + "\n"
     if i % 5000 == 4999:
         rag.insert(buffer)
