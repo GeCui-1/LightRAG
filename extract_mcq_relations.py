@@ -8,7 +8,7 @@ extracted_context_log_path = "./data/mcq_context.log"
 with open(qa_path, 'r') as file:
 	qa = file.read()
 	print(qa)
-    qas = (qa).split('\n')
+	qas = qa.split('\n')
 entities = []
 for i in range(len(qas)):
     if i % 2 == 1:
