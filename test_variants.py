@@ -17,7 +17,7 @@ WORKING_DIR = "./tf"
 if not os.path.exists(WORKING_DIR):
     os.mkdir(WORKING_DIR)
 
-context_file_path = "./data/treatment/extracted_mcq_variants.log"
+context_file_path = "./data/extracted_variants_context.log"
 
 #################################################################### create RAG
 rag = LightRAG(
