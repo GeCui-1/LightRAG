@@ -11,8 +11,8 @@ with open(qa_path, 'r') as file:
 	qas = qa.split('\n')
 entities = []
 for i in range(len(qas)):
-    if i % 2 == 1:
-        entity = qas[i].lower().split(':')[1].replace(' ', '')
+	if i % 2 == 1:
+		entity = qas[i].lower().split(':')[1].replace(' ', '')
 		entities.append(entity)
 entities = list(dict.fromkeys(entities))
 print(entities)
