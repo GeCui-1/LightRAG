@@ -6,11 +6,11 @@ extracted_entity_log_path = "./data/mcq_entity.log"
 extracted_context_log_path = "./data/mcq_context.log"
 
 with open(qa_path, 'r') as file:
-    qa = file.read()
+    qas = (file.read()).split('\n')
 entities = []
-for i in range(len(qa)):
+for i in range(len(qas)):
     if i % 2 == 1:
-        entity = qa[i].lower().split(':')[1].replace(' ', '')
+        entity = qas[i].lower().split(':')[1].replace(' ', '')
 entities = list(dict.fromkeys(entities))
 print(entities)
 
